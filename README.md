@@ -87,3 +87,8 @@ Scrapy==2.5.0
 requests==2.23.0
 psycopg2==2.8.5
 ````
+for execution simply invoke 
+````
+docker-compose up
+````
+in the root folder
