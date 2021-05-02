@@ -59,7 +59,7 @@ Inline-style:
 ![alt text](https://github.com/msyafiqakmal/scr-dw-af-dc_prod/blob/master/image/ddlindbeaver.png "DDL in dbeaver")
 
 Inline-style: 
-![alt text](https://github.com/msyafiqakmal/scr-dw-af-dc_prod/blob/master/image/dbeaver.png"data in dbeaver")
+![alt text](https://github.com/msyafiqakmal/scr-dw-af-dc_prod/blob/master/image/dbeaver.png "data in dbeaver")
 
 I managed to implement error handling for some components. 
 ```
