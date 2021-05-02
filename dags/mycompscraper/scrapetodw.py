@@ -7,6 +7,7 @@ import psycopg2
 import psycopg2.extras as extras
 import pandas.io.sql as sqlio
 import os
+import json
 
 # Following are defaults which can be overridden later on
 default_args = {
@@ -22,22 +23,24 @@ default_args = {
 dag = DAG('Scraper_to_DataWarehouse', default_args=default_args)
 
 #initialization for Scrapy
-scrapy_path="/home/msyafiqakmal/airflow/dags/mycompscraper/mycompscraper"
 currentpath="/home/msyafiqakmal/airflow/dags/mycompscraper"
+
+with open(currentpath+'/mytaskconfig.json') as json_file:
+    config = json.load(json_file)
 
 #initialization for DW onwards
 scr_db_conn = {
-    "host"      : "192.168.0.112",
-    "database"  : "BursaCompanies",
-    "user"      : "msyafiqakmal",
-    "password"  : "M19yosil"
+    "host"      : config["scraptargethost"],
+    "database"  : config["scraptargetdatabase"],
+    "user"      : config["scraptargetuser"],
+    "password"  : config["scraptargetpassword"]
 }
 
 dw_db_conn = {
-    "host"      : "192.168.0.112",
-    "database"  : "DW_MarketWatch",
-    "user"      : "msyafiqakmal",
-    "password"  : "M19yosil"
+    "host"      : config["dwoutputhost"],
+    "database"  : config["dwoutputdatabase"],
+    "user"      : config["dwoutputuser"],
+    "password"  : config["dwoutputpassword"]
 }
 
 #Utility Functions
@@ -218,7 +221,7 @@ def dw_load():
 
 t1 = BashOperator(
     task_id='scrape_web_to_sourcedb',
-    bash_command='cd {} && scrapy crawl CompanyScraper'.format(scrapy_path),
+    bash_command='cd {} && scrapy crawl CompanyScraper'.format(currentpath+"/mycompscraper"),
     dag=dag)
 
 t2 = PythonOperator(

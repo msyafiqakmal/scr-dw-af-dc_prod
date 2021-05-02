@@ -8,16 +8,19 @@
 from itemadapter import ItemAdapter
 import psycopg2
 from datetime import datetime
+import json
 
 class MycompscraperPipeline(object):
     # def process_item(self, item, spider):
         # print("pipelineX: "+item['CompanyFullName'])
         # return item
     def open_spider(self, spider):
-            hostname = '192.168.0.112'
-            username = 'msyafiqakmal'
-            password = 'M19yosil' # your password
-            database = 'BursaCompanies'
+            with open('../mytaskconfig.json') as json_file:
+                config = json.load(json_file)  
+            hostname = config["scraptargethost"]
+            username = config["scraptargetuser"]
+            password = config["scraptargetpassword"]
+            database = config["scraptargetdatabase"]
             self.connection = psycopg2.connect(host=hostname, user=username, password=password, dbname=database)
             self.cur = self.connection.cursor()
 

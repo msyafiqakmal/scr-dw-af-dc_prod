@@ -1,0 +1,11 @@
+{
+    "scraptargethost"      : "192.168.0.112",
+    "scraptargetdatabase"  : "BursaCompanies",
+    "scraptargetuser"      : "msyafiqakmal",
+    "scraptargetpassword"  : "M19yosil",
+    "dwoutputhost"      : "192.168.0.112",
+    "dwoutputdatabase"  : "BursaCompanies",
+    "dwoutputuser"      : "msyafiqakmal",
+    "dwoutputpassword"  : "M19yosil",
+    "dagpath"           : 
+}
