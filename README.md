@@ -90,7 +90,6 @@ For docker compose, I used airflow image prepared by puckle and I added [require
 numpy==1.19.4
 pandas==1.1.5
 pytz==2020.1
-Scrapy==2.5.0
 requests==2.23.0
 psycopg2==2.8.5
 ````
